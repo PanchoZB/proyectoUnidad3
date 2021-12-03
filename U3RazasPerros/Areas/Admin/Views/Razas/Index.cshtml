@@ -1,0 +1,22 @@
+﻿@model IEnumerable<U3RazasPerros.Models.Razas>
+@{
+
+    Layout = "_adminMasterPage";
+}
+<section class="listado">
+    <a class="mark" href="~/Admin/Razas/Agregar">
+        <h1>Nueva Raza</h1>
+
+    </a>
+    @foreach (var p in Model)
+    {
+        <div class="card">
+            
+            <h1>@p.Nombre</h1>
+            <div class="button">
+                <a href="~/Admin/Razas/Editar/@p.Id" class="editar">Editar</a>
+                <a href="~/Admin/Razas/Eliminar/@p.Id" class="eliminar">Eliminar</a>
+            </div>
+        </div>
+    }
+</section>

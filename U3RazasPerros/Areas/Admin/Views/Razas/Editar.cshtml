@@ -1,0 +1,82 @@
+﻿@model U3RazasPerros.Areas.Admin.Models.AgregarViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Editar";
+    Layout = "_adminMasterPage";
+}
+
+<form method="post" action="~/Admin/Razas/Editar">
+    <div>
+        <h1>Editar Raza</h1>
+        <input asp-for="Razas.Id" type="hidden"  name="Id" value="@Model.Razas.Id" />
+        <input asp-for="Caracteristicasfisicas.Id" type="hidden" name="Caracteristicasfisicas.Id" value="@Model.Caracteristicasfisicas.Id"/>
+        <label>Nombre:</label>
+        <br /> <br />
+        <input type="text" asp-for="Razas.Nombre" name="Nombre" value="@Model.Razas.Nombre" required />
+        <br /> <br />
+        <label>Descripcion:</label>
+        <br /> <br />
+        <input type="text" asp-for="Razas.Descripcion" name="Descripcion" value="@Model.Razas.Descripcion" required />
+        <br /> <br />
+        <label>Pais de origen:</label>
+        <br /> <br />
+        <select required="required"
+                asp-items="@(new SelectList(Model.Paises,"Id","Nombre"))" name="IdPais">
+            <option selected="selected" value=""> Seleccionar un pais </option>
+        </select>
+        <br /> <br />
+        <label>otros nombres:</label>
+        <br /> <br />
+        <input type="text" asp-for="Razas.OtrosNombres" name="OtrosNombres" value="@Model.Razas.OtrosNombres"  required />
+        <br /> <br />
+        <label>peso maximo:</label>
+        <br /> <br />
+        <input type="text" asp-for="Razas.PesoMax" name="PesoMax" value="@Model.Razas.PesoMax"  required />
+        <br /> <br />
+        <label>peso minimo:</label>
+        <br /> <br />
+        <input type="text" asp-for="Razas.PesoMin" name="PesoMin" value="@Model.Razas.PesoMin"  required />
+        <br /> <br />
+        <label>altura maxima:</label>
+        <br /> <br />
+        <input type="text" asp-for="Razas.AlturaMax" name="AlturaMax" value="@Model.Razas.AlturaMax"  required />
+        <br /> <br />
+        <label>altura minima:</label>
+        <br /> <br />
+        <input type="text" asp-for="Razas.AlturaMin" name="AlturaMin" value="@Model.Razas.AlturaMin"  required />
+        <br /> <br />
+        <label>esperanza de vida:</label>
+        <br /> <br />
+        <input type="text" asp-for="Razas.EsperanzaVida" name="EsperanzaVida" value="@Model.Razas.EsperanzaVida"  required />
+        <br />  <br />
+        <label>Caracteristicas fisicas:</label>
+        <br /> <br />
+        <label>cola</label>
+        <br />  <br />
+        <input  asp-for="Caracteristicasfisicas.Cola" name="Cola" value="@Model.Caracteristicasfisicas.Cola"  required />
+        <br /><br />
+        <label>patas</label>
+        <br /><br />
+        <input asp-for="Caracteristicasfisicas.Patas" name="Patas" value="@Model.Caracteristicasfisicas.Patas"  required />
+        <br /><br />
+        <label>Hocico</label>
+        <br /><br />
+        <input asp-for="Caracteristicasfisicas.Hocico" name="Hocico" value="@Model.Caracteristicasfisicas.Hocico"  required />
+        <br /><br />
+        <label>pelo</label>
+        <br /><br />
+        <input  asp-for="Caracteristicasfisicas.Pelo" name="Pelo" value="@Model.Caracteristicasfisicas.Pelo"  required />
+        <br /><br />
+        <label>color</label>
+        <br /><br />
+        <input asp-for="Caracteristicasfisicas.Color" name="Color" value="@Model.Caracteristicasfisicas.Color"  required />
+        <br /><br />
+        <div class="botones">
+            <p id="error">@Html.ValidationSummary()</p>
+            <input type="submit" value="Editar" id="btnEditar" />
+            <a href="~/Admin/Razas/">
+                <input type="button" value="Cancelar" id="btnCancelar" formnovalidate="formnovalidate" />
+            </a>
+        </div>
+    </div>
+</form>
